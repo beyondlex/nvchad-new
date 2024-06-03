@@ -36,6 +36,8 @@ return {
   -- 	},
   -- },
   {
+
+    -- https://github.com/nvim-neo-tree/neo-tree.nvim
     "nvim-neo-tree/neo-tree.nvim",
     branch = "v3.x",
     lazy = false,
@@ -112,8 +114,23 @@ return {
             ["Y"] = {"copy_path", config={title="copy path"}},
             ["<M-k>"] = { "scroll_preview", config = {direction = 10} },
             ["<M-j>"] = { "scroll_preview", config = {direction = -10} },
-          }
-        }
+          },
+          filesystem = {
+            filtered_items = {
+              visible = true,
+              hide_dotfiles = false,
+              hide_gitignored = false,
+            },
+            follow_current_file = {
+              enabled = true,
+            }
+          }, -- filesystem
+          buffers = {
+            follow_current_file = {
+              enabled = true,
+            }
+          }, -- buffers
+        },
       })
     end,
 }

@@ -11,6 +11,14 @@ M.ui = {
 	-- 	Comment = { italic = true },
 	-- 	["@comment"] = { italic = true },
 	-- },
+  statusline = {
+    separator_style = "block",
+    theme = "default",
+  },
+
+  nvdash = {
+    load_on_startup = true,
+  },
 }
 
 return M
