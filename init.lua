@@ -16,9 +16,11 @@ local lazy_config = require "configs.lazy"
 -- load plugins
 require("lazy").setup({
   {
-    "NvChad/NvChad",
+    -- "NvChad/NvChad",
+    "beyondlex/NvChad",
     lazy = false,
     branch = "v2.5",
+    commit = "7a740ba",
     import = "nvchad.plugins",
     config = function()
       require "options"
