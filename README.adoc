@@ -1,0 +1,6 @@
+= nvchad-new
+
+configuration for https://github.com/NvChad/NvChad[NvChad](v2.5)
+
+located at `~/.config/nvim/`
+
