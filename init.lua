@@ -20,7 +20,7 @@ require("lazy").setup({
     "beyondlex/NvChad",
     lazy = false,
     branch = "v2.5",
-    commit = "7a740ba",
+    commit = "7d18cc9",
     import = "nvchad.plugins",
     config = function()
       require "options"
