@@ -130,8 +130,27 @@ return {
               enabled = true,
             }
           }, -- buffers
-        },
-      })
+        }, -- setup.windwo
+      }) -- setup()
+    end, -- config function
+  }, -- neo-tree
+
+  -- https://michaelb.github.io/sniprun/sources/README.html#installation
+  {
+    "michaelb/sniprun",
+    branch = "master",
+    build = "sh install.sh",
+    lazy = false,
+    -- do 'sh install.sh 1' if you want to force compile locally
+    -- (instead of fetching a binary from the github release). Requires Rust >= 1.65
+    config = function()
+      require("sniprun").setup({
+        -- window = {
+        --   mappings = {
+        --     ["<leader>run"] = {"<Plug>SnipRun"},
+        --   }, -- setup.window.mappings
+        -- }, -- setup.window
+      }) -- setup
     end,
-}
+  }, -- sniprun
 }
