@@ -153,4 +153,54 @@ return {
       }) -- setup
     end,
   }, -- sniprun
+
+  -- https://github.com/folke/noice.nvim
+  {
+    "folke/noice.nvim",
+    event = "VeryLazy",
+    opts = {
+      -- add any options here
+    },
+    dependencies = {
+      -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+      "MunifTanjim/nui.nvim",
+      -- OPTIONAL:
+      --   `nvim-notify` is only needed, if you want to use the notification view.
+      --   If not available, we use `mini` as the fallback
+      "rcarriga/nvim-notify",
+    },
+    config = function()
+      require("noice").setup({
+        -- https://github.com/folke/noice.nvim/wiki/Configuration-Recipes
+        presets = {
+          bottom_search = true,
+        },
+        lsp = {
+          hover = {
+            enabled = false,
+          },
+          signature = {
+            enabled = false,
+          }
+        },
+      }) -- setup
+    end,
+  }, -- noice
+
+  {
+    "chrisgrieser/nvim-tinygit",
+    lazy = false,
+    ft = { "git_rebase", "gitcommit" }, -- so ftplugins are loaded
+    dependencies = {
+      "stevearc/dressing.nvim",
+      "nvim-telescope/telescope.nvim", -- either telescope or fzf-lua
+      -- "ibhagwan/fzf-lua",
+      "rcarriga/nvim-notify", -- optional, but will lack some features without it
+    },
+    config = function()
+      vim.keymap.set("n", "gc", function() require("tinygit").smartCommit() end)
+      -- setup(opts): https://github.com/chrisgrieser/nvim-tinygit#configuration
+      require("tinygit").setup()
+    end,
+  },
 }

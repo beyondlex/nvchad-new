@@ -6,6 +6,7 @@ local M = {}
 
 M.ui = {
 	theme = "onedark",
+  transparency = false,
 
 	-- hl_override = {
 	-- 	Comment = { italic = true },
@@ -13,7 +14,7 @@ M.ui = {
 	-- },
   statusline = {
     separator_style = "block",
-    theme = "default",
+    theme = "vscode", -- default/minimal/vscode/vscode_colored
   },
 
   nvdash = {
