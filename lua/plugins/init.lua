@@ -198,6 +198,7 @@ return {
       "rcarriga/nvim-notify", -- optional, but will lack some features without it
     },
     config = function()
+      -- :h vim.keymap.set
       vim.keymap.set("n", "gc", function() require("tinygit").smartCommit() end)
       -- setup(opts): https://github.com/chrisgrieser/nvim-tinygit#configuration
       require("tinygit").setup()
