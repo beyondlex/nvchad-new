@@ -199,8 +199,8 @@ return {
     },
     config = function()
       -- :h vim.keymap.set
-      vim.keymap.set("n", "gc", function() require("tinygit").smartCommit() end)
-      vim.keymap.set("n", "gp", function() require("tinygit").push() end)
+      vim.keymap.set("n", "<leader>gc", function() require("tinygit").smartCommit() end)
+      vim.keymap.set("n", "<leader>gp", function() require("tinygit").push() end)
       -- setup(opts): https://github.com/chrisgrieser/nvim-tinygit#configuration
       require("tinygit").setup()
     end,
