@@ -114,6 +114,8 @@ return {
             ["Y"] = {"copy_path", config={title="copy path"}},
             ["<M-k>"] = { "scroll_preview", config = {direction = 10} },
             ["<M-j>"] = { "scroll_preview", config = {direction = -10} },
+            ["<Leader>l"] = { "focus_preview"},
+            ["l"] = { "open"},
           },
           filesystem = {
             filtered_items = {
