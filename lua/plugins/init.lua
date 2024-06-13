@@ -1,3 +1,10 @@
+
+local on_attach = require("nvchad.configs.lspconfig").on_attach
+local on_init = require("nvchad.configs.lspconfig").on_init
+local capabilities = require("nvchad.configs.lspconfig").capabilities
+
+local lspconfig = require "lspconfig"
+
 return {
   {
     "stevearc/conform.nvim",
@@ -8,23 +15,28 @@ return {
   },
 
   -- These are some examples, uncomment them if you want to see them work!
-   {
-     "neovim/nvim-lspconfig",
-     config = function()
-       require("nvchad.configs.lspconfig").defaults()
-       require "configs.lspconfig"
-     end,
-   },
+ {
+   "neovim/nvim-lspconfig",
+   config = function()
+     require("nvchad.configs.lspconfig").defaults()
+     require "configs.lspconfig"
+   end,
+ },
 
-  {
-  	"williamboman/mason.nvim",
-  	opts = {
-  		ensure_installed = {
-  			"lua-language-server", "stylua",
-  			"html-lsp", "css-lsp" , "prettier", "java-language-server"
-  		},
-  	},
-  },
+  -- {
+  -- 	"williamboman/mason.nvim",
+  -- 	opts = {
+  --     registries = {
+  --       'github:nvim-java/mason-registry',
+  --       'github:mason-org/mason-registry',
+  --     },
+  -- 		ensure_installed = {
+  -- 			"lua-language-server", "stylua",
+  -- 			"html-lsp", "css-lsp" , "prettier", "java-language-server"
+  -- 		},
+  -- 	},
+  -- },
+  --
   --
   -- {
   -- 	"nvim-treesitter/nvim-treesitter",
@@ -207,4 +219,63 @@ return {
       require("tinygit").setup()
     end,
   },
+
+  {
+    'nvim-java/nvim-java',
+    lazy = false,
+    dependencies = {
+      'nvim-java/lua-async-await',
+      'nvim-java/nvim-java-refactor',
+      'nvim-java/nvim-java-core',
+      'nvim-java/nvim-java-test',
+      'MunifTanjim/nui.nvim',
+      'neovim/nvim-lspconfig',
+      {
+
+        'nvim-java/nvim-java-dap',
+        lazy = false,
+      },
+      {
+        'mfussenegger/nvim-dap',
+        lazy = false,
+      },
+      {
+        'williamboman/mason.nvim',
+        opts = {
+          registries = {
+            'github:nvim-java/mason-registry',
+            'github:mason-org/mason-registry',
+          },
+          ensure_installed = {
+            "lua-language-server", "stylua",
+            "html-lsp", "css-lsp" , "prettier", "java-language-server"
+          },
+        },
+      }
+    },
+    config = function()
+      require('java').setup()
+
+      -- https://github.com/nvim-java/nvim-java/issues/103#issuecomment-2035826620
+      lspconfig.jdtls.setup {
+        on_attach = on_attach,
+        on_init = on_init,
+        capabilities = capabilities,
+
+        -- https://github.com/eclipse-jdtls/eclipse.jdt.ls/wiki/Running-the-JAVA-LS-server-from-the-command-line#initialize-request
+        -- https://github.com/nvim-java/nvim-java?tab=readme-ov-file#method-2
+        settings = {
+          java = {
+            configuration = {
+              runtimes = {
+                name = "JavaSE-17",
+                path = "/Users/lex/.sdkman/candidates/java/17.0.10-librca/",
+                default = true,
+              }
+            }
+          }
+        }
+      }
+    end
+  }, -- nvim-java
 }
